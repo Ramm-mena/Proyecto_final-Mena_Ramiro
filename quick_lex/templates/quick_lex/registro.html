@@ -1,0 +1,14 @@
+{% extends 'quick_lex/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br>
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <button type="submit">Crear Usuario</button>
+</form>
+{% endblock content %}

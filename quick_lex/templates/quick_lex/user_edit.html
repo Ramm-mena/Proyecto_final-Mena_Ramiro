@@ -1,0 +1,30 @@
+{% extends 'quick_lex/base.html' %} 
+{% load static %} 
+
+{% block content %}
+<h2>Editar Usuario:</h2>
+
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th><label for="{{ form.username.id_for_label }}">Nombre de usuario:</label></th>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <th><label for="{{ form.email.id_for_label }}">E-Mail:</label></th>
+                <td>{{ form.email }}</td>
+            </tr>
+                <th><label for="{{ form.new_password1.id_for_label }}">Nueva Contraseña:</label></th>
+                <td>{{ form.new_password1 }}</td>
+            </tr>
+            <tr>
+                <th><label for="{{ form.new_password2.id_for_label }}">Repetir Nueva Contraseña:</label></th>
+                <td>{{ form.new_password2 }}</td>
+            </tr>
+        </table>
+        <button type="submit">Actualizar Usuario</button>
+    </form>
+    
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends 'quick_lex/base.html' %}
+{% load static %}
+   
+{% block content %}
+<h2>Buscador de expedientes</h2>
+
+<body>
+    <form action="/quick_lex/buscador" method="get">
+        {% csrf_token %}
+        <input type="text" name="expedientes" id="expedientes">
+        <input type="submit" value="Buscar">
+    </form>
+</body>
+
+{% if buscados %}
+
+    {% for objetos in buscados %}
+        <p>Caratula: {{objetos.cartula}}</p>
+        <p>Fuero: {{objetos.fuero}}</p>
+        <p>Numero: {{objetos.numero}}</p>
+        <p>Abogado: {{objetos.abogado}}</p>
+        <p>Personas: {{objetos.personas}}</p>
+        <p>Estado: {{objetos.estado}}</p>
+    {% endfor %}
+
+    {% else %}
+
+    
+
+
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,56 @@
+{% extends 'quick_lex/base.html' %}
+{% load static %}
+
+{% block content %}
+<table>
+    <tr>
+        <td width="50"><h2>Staff:</h2></td>
+        <td>
+            <a
+            href="{% url 'staff_create' %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-plus fa-lg" title="Agregar Miembro"></i> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr> 
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Cargo</th>
+            <th>Telefono</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for Staff in staff %}
+    <tr>
+        <td>{{ Staff.id }}</td>    
+        <td>{{ Staff.nombre }}</td>
+        <td>{{ Staff.apellido }}</td>
+        <td>{{ Staff.cargo }}</td>
+        <td>{{ Staff.telefono }}</td>
+        <td>{{ Staff.email }}</td>
+        <td>
+            <a
+            href="{% url 'staff_update' Staff.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-edit fa-sm" title="Editar"></i>
+            </a>
+            <a
+            href="{% url 'staff_delete' Staff.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+            </a>
+        </td>      
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'quick_lex/base.html' %}
+{% load static %}
+   
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Caratula</th>
+            <th>Fuero</th>
+            <th>Numero</th>
+            <th>Abogado</th>
+            <th>Personas</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for Expedientes in expedientes %}
+    <tr>
+        <td>{{ Expedientes.cartula }}</td>
+        <td>{{ Expedientes.fuero }}</td>
+        <td>{{ Expedientes.numero }}</td>
+        <td>{{ Expedientes.abogado }}</td>
+        <td>{{ Expedientes.personas }}</td>
+        <td>{{ Expedientes.estado }}</td>
+        
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

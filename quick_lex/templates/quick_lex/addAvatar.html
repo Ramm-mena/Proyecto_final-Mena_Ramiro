@@ -1,0 +1,15 @@
+{% extends 'quick_lex/base.html' %}
+{% load static %}
+   
+{% block content %}
+    <br>
+    <h3>Agregar Avatar</h3>
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{ form.as_p  }}
+
+        <input type="submit" value="Actualizar">
+
+    </form>
+{% endblock content %}

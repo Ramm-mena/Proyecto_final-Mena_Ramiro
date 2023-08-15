@@ -1,0 +1,58 @@
+{% extends 'quick_lex/base.html' %}
+{% load static %}
+   
+{% block content %}
+<table>
+    <tr>
+        <td width="100"><h2>Abogados:</h2></td>
+        <td>
+            <a
+            href="{% url 'abog_create' %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-plus fa-lg" title="Agregar abogado"></i> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Especialidad</th>
+            <th>Matricula</th>
+            <th>Telefono</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for Abogados in abogados %}
+    <tr>
+        <td>{{ Abogados.id }}</td>
+        <td>{{ Abogados.nombre }}</td>
+        <td>{{ Abogados.apellido }}</td>
+        <td>{{ Abogados.Especialidad }}</td>
+        <td>{{ Abogados.matricula }}</td>
+        <td>{{ Abogados.telefono }}</td>
+        <td>{{ Abogados.email }}</td>
+        <td>
+            <a
+            href="{% url 'abog_update' Abogados.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-edit fa-sm" title="Editar"></i>
+            </a>
+            <a
+            href="{% url 'abog_delete' Abogados.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+            </a>
+        </td>      
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

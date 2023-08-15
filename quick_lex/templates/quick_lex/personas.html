@@ -1,0 +1,55 @@
+{% extends 'quick_lex/base.html' %}
+{% load static %}
+   
+{% block content %}
+<table>
+    <tr>
+        <td width="100"><h2>Directorio:</h2></td>
+        <td>
+            <a
+            href="{% url 'pers_create' %}"
+            class="btn btn-primary "
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-plus fa-lg" title="Resgistrar"></i> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for Personas in personas %}
+    <tr>
+        <td>{{ Personas.id }}</td>
+        <td>{{ Personas.nombre }}</td>
+        <td>{{ Personas.apellido }}</td>
+        <td>{{ Personas.telefono }}</td>
+        <td>{{ Personas.email }}</td>
+        <td>
+            <a
+            href="{% url 'pers_update' Personas.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-edit fa-sm" title="Editar"></i>
+            </a>
+            <a
+            href="{% url 'pers_delete' Personas.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+            </a>
+        </td>    
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
